@@ -33,6 +33,22 @@ func TestYamlTemplate(t *testing.T) {
 			Template: "Legumes:{{ range $index, $el := .legumes}}{{if $index}},{{end}} {{$el}}{{end}}",
 			Output:   "Legumes: potato, onion, cabbage",
 		},
+		// sprig:
+		io{
+			Input:    "legumes:\n  - potato\n  - onion\n  - cabbage",
+			Template: `Legumes: {{ .legumes | join ", " }}`,
+			Output:   "Legumes: potato, onion, cabbage",
+		},
+		io{
+			Input:    "legumes: potato onion cabbage",
+			Template: `Legumes: {{ .legumes | splitList " " | join ", " }}`,
+			Output:   "Legumes: potato, onion, cabbage",
+		},
+		io{
+			Input:    "legumes: potato onion cabbage",
+			Template: "Legumes: {{ .legumes | b64enc | b64dec }}",
+			Output:   "Legumes: potato onion cabbage",
+		},
 	}
 
 	for _, test := range tests {

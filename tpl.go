@@ -6,16 +6,19 @@ import (
 	"io"
 	"log"
 	"os"
+	"path"
 	"text/template"
 
+	"github.com/Masterminds/sprig"
 	"gopkg.in/yaml.v2"
 )
 
-// Reads a YAML document from the values_in stream, uses it as values
+// ExecuteTemplates Reads a YAML document from the values_in stream, uses it as values
 // for the tpl_files templates and writes the executed templates to
 // the out stream.
 func ExecuteTemplates(values_in io.Reader, out io.Writer, tpl_files ...string) error {
-	tpl, err := template.ParseFiles(tpl_files...)
+	name := path.Base(tpl_files[0])
+	tpl, err := template.New(name).Funcs(sprig.TxtFuncMap()).ParseFiles(tpl_files...)
 	if err != nil {
 		return fmt.Errorf("Error parsing template(s): %v", err)
 	}

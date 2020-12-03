@@ -1,5 +1,8 @@
 # gotpl - CLI tool for Golang templates
 
+![Release gotpl
+project](https://github.com/jjo/gotpl/workflows/Release%20gotpl%20project/badge.svg)
+
 Command line tool that compiles Golang
 [templates](http://golang.org/pkg/text/template/) with values from YAML files.
 

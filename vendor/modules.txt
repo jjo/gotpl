@@ -20,6 +20,9 @@ github.com/imdario/mergo
 # github.com/pmezard/go-difflib v1.0.0
 ## explicit
 github.com/pmezard/go-difflib/difflib
+# github.com/spf13/pflag v1.0.5
+## explicit
+github.com/spf13/pflag
 # github.com/stretchr/testify v1.5.1
 ## explicit
 github.com/stretchr/testify/assert

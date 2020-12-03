@@ -8,6 +8,7 @@ require (
 	github.com/Masterminds/sprig/v3 v3.1.0 // indirect
 	github.com/aokoli/goutils v1.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.5.1
 	gopkg.in/yaml.v2 v2.2.2
 )

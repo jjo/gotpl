@@ -52,17 +52,17 @@ func TestYamlTemplate(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		tpl_file, err := ioutil.TempFile("", "")
+		tplFile, err := ioutil.TempFile("", "")
 		assert.Nil(t, err)
-		defer func() { os.Remove(tpl_file.Name()) }()
+		defer func() { os.Remove(tplFile.Name()) }()
 
-		_, err = tpl_file.WriteString(test.Template)
+		_, err = tplFile.WriteString(test.Template)
 		assert.Nil(t, err)
-		tpl_file.Close()
+		tplFile.Close()
 
 		output := bytes.NewBuffer(nil)
 		err = ExecuteTemplates(strings.NewReader(test.Input), output,
-			tpl_file.Name())
+			[]string{tplFile.Name()})
 		assert.Nil(t, err)
 
 		assert.Equal(t, test.Output, output.String())

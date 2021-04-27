@@ -1,4 +1,4 @@
-module github/jjo/gotpl
+module github.com/jjo/gotpl
 
 go 1.15
 
